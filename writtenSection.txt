@@ -1,28 +1,42 @@
 Answer each question in a written format
 
 1. What does semantic HTML mean?
+	- Semantic HTML is the convention of writing HTML tags in a way that describes what the tag is and what is used for in relation to the page.  e.g., <section> instead of <div> at the beginning of a new page section.
 
 2. What is the box model?
+	-The box model is the CSS position and layout model that describes the space around the content.  The content, what is typed in between particular HTML tags, is in the middle of the box-model.  The border surrounds the content.  Padding is in between the content and the border.  When you increase or decrease the padding, that will affect how close or far from the content the border will be.  Margin is the outer-most part of the box-model.  This affects where the box is positioned in relation to surround content.  Margin pushes the box away from other content (or pushes other content away depending on your perspective)
 
 3. What is the difference between IDs and Classes?
+	-IDs and classes are ways to identify certain HTML tags within our code, whether for styling purposes or adding event handling code in JavaScript.  Classes can be applied to multiple HTML tags throughout our code and an HTML tag can have multiple classes.  IDs can (or at least should) only be applied to one individual tag and a tag can only have one ID.
 
 4. What does the z-index do?
+	- z-index is a CSS property that affects how elements in the page are positioned on top of each other.  The element with the highest z-index will overlap any other element if they are on the same position on the page.  However, z-index doesn't always work like this and it depends on the element's parent element is positioned (absoluate, fixed, relative, etc). 
 
 5. Summarize what the keyword 'this' is used for?
+	-The keyword 'this' is used in JavaScript to bind an execution context (what called the function, where was the function called, etc) when a function is invoked.  What the 'this' key references is entirely dependent on what called the function.  For example, when a method (a function in an object) is called, the this keyword references the object and the data within the object.  Sometimes, 'this' is lost when a funciton is called, like in a SetTimeout asynchoronous function.  So there are ways to reset the context by using explicit binding methods like .call, .apply, and .bind.
 
 6. What is a callback?
+	-A callback function is a function that is passed into another function when that original function is invoked.  A callback is a closure in that it retains the scope of the first function when it is invoked.  A callback 
 
-7. What is a closure?
+7. What is a closure?  
+	-A closure is a function that is returned by another function.  The closure retains the information that existed in the original functions scope including parameters.
 
 8. How does prototype work?
+	-In JavaScript, data types have a wrapper object around the provides additional functionality to the data type.  This is the prototype.  The prototype holds methods that can manipulate the content, such as the .toUpperCase() method on the String prototype that will set all the letters in the string to uppercase values.  It is possible to make custom prototype methods but it is not recommended.
 
 9. What is MVC?
+	-Model - View - Controller.  A JavaScript design pattern that explains how data is displayed to the user and manipulated by the user.  The user uses controllers to manipulate the data in the model which then updates the data in the view which is then displayed back to the user.
 
 10. What is the component lifecycle?
+	-The component lifecycle is series of events that happen in component based languages (React, VueJS) that occur at different stages of the component rendering.  These hooks allow us to do certain things with the component and its data at different stages.  For example, when before a component mounts to the DOM, we want to make an HTTP request to store the results within our state.  
 
 11. What is REST?
+	-Representational State Transfer. The most popular method of accessing information stored on databases or third-party APIs through HTTP requests and allows us to use simple verbs such as GET, PUT, CREATE, PATCH, and DELETE to access or manipulate the data.
 
 12. Name three ways of getting data from the URL using express
+	req.params => (/api/:user_id)
+	req.query => (/api/users?name="john")
+	req.path => returns the path part of the URL
 
 create table users (
 id serial,
@@ -33,9 +47,20 @@ email varchar(255)
 12. Given the Schema above, write the following four basic CRUD db queries using postgres syntax
 
 -Get all users:
+	select * from users;
 
 -Create a new user with the name of 'your name' and an email of 'fake@fake.com':
+	insert into users
+	(name, email)
+	values
+	(default, 'your name', 'fake@fake.com');
+
 
 -Update the newly created user's name to 'Bobby Boy':
+	update users
+	set name = 'Bobby Boy'
+	where id = 1;
 
 -Delete the newly updated user:
+	delete from users
+	where id = 1;
